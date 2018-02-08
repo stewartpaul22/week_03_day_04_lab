@@ -22,11 +22,13 @@ class Actor
     sql = "SELECT * FROM actors"
     values = []
     actors = SqlRunner.run(sql, values)
-    return actors.map{|actor| Actor.new(actor)}    
+    return actors.map{|actor| Actor.new(actor)}
   end
-
-  # update
-
   # delete
+  def self.delete_all()
+    sql = "DELETE FROM actors"
+    values = []
+    SqlRunner.run(sql, values)
+  end
 
 end

@@ -24,7 +24,6 @@ class Casting
     return castings.map{|casting| Casting.new(casting)}
   end
 
-  # update
 
   # delete
 

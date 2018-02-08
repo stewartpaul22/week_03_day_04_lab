@@ -25,8 +25,6 @@ class Movie
     movies = SqlRunner.run(sql, values)
     return movies.map{|movie| Movie.new(movie)}
   end
-  # update
-
   # delete
 
 end
