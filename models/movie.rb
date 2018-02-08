@@ -9,6 +9,7 @@ class Movie
     @title = options['title']
     @genre = options['genre']
     @rating = options['rating'].to_i
+    @budget = options['budget'].to_i
   end
 
   # create
