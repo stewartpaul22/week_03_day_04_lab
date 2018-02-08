@@ -18,6 +18,12 @@ class Actor
     @id = actor['id'].to_i
   end
   # read
+  def self.all()
+    sql = "SELECT * FROM actors"
+    values = []
+    actors = SqlRunner.run(sql, values)
+    return actors.map{|actor| Actor.new(actor)}    
+  end
 
   # update
 
