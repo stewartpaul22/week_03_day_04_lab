@@ -12,5 +12,8 @@ actor2.save()
 actor3.save()
 actor4.save()
 
+movie1 = Movie.new({'title' => 'The Big Lebowski', 'genre' => 'comedy', 'rating' => '9'})
+movie1.save()
+
 binding.pry
 nil
