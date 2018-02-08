@@ -17,6 +17,12 @@ class Casting
     @id = casting['id'].to_i
   end
   # read
+  def self.all()
+    sql = "SELECT * FROM castings"
+    values = []
+    castings = SqlRunner.run(sql, values)
+    return castings.map{|casting| Casting.new(casting)}
+  end
 
   # update
 
