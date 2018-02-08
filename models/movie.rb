@@ -19,7 +19,12 @@ class Movie
     @id = movie['id'].to_i
   end
   # read
-
+  def self.all()
+    sql = "SELECT * FROM movies"
+    values = []
+    movies = SqlRunner.run(sql, values)
+    return movies.map{|movie| Movie.new(movie)}
+  end
   # update
 
   # delete
