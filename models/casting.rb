@@ -23,8 +23,11 @@ class Casting
     castings = SqlRunner.run(sql, values)
     return castings.map{|casting| Casting.new(casting)}
   end
-
-
   # delete
+  def self.delete_all()
+    sql = "DELETE FROM castings"
+    values = []
+    SqlRunner.run(sql, values)    
+  end
 
 end
