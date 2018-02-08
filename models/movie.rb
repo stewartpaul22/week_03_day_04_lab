@@ -26,5 +26,10 @@ class Movie
     return movies.map{|movie| Movie.new(movie)}
   end
   # delete
+  def self.delete_all()
+    sql = "DELETE FROM movies"
+    values = []
+    SqlRunner.run(sql, values)
+  end
 
 end
