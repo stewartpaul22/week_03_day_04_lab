@@ -12,8 +12,8 @@ class Actor
   def save()
     sql = "INSERT INTO actors (first_name, last_name) VALUES ($1, $2) RETURNING id"
     values = [@first_name, @last_name]
-    actor = SqlRunner.run(sql, values)
-    @id = actor['id'].to_i    
+    actor = SqlRunner.run(sql, values).first
+    @id = actor['id'].to_i
   end
   # read
 
