@@ -8,4 +8,17 @@ class Actor
     @last_name = options['last_name']
   end
 
+  # create
+  def save()
+    sql = "INSERT INTO actors (first_name, last_name) VALUES ($1, $2) RETURNING id"
+    values = [@first_name, @last_name]
+    actor = SqlRunner.run(sql, values)
+    @id = actor['id'].to_i    
+  end
+  # read
+
+  # update
+
+  # delete
+
 end
