@@ -1,3 +1,4 @@
+require('pry-byebug')
 require_relative('../db/sql_runner.rb')
 
 class Movie
@@ -14,8 +15,8 @@ class Movie
 
   # create
   def save()
-    sql = "INSERT INTO movies (title, genre, rating) VALUES ($1, $2, $3) RETURNING id"
-    values = [@title, @genre, @rating]
+    sql = "INSERT INTO movies (title, genre, rating, budget) VALUES ($1, $2, $3, $4) RETURNING id"
+    values = [@title, @genre, @rating, @budget]
     movie = SqlRunner.run(sql, values).first
     @id = movie['id'].to_i
   end
@@ -25,6 +26,15 @@ class Movie
     values = [@id]
     actors = SqlRunner.run(sql, values)
     return actors.map{|actor| Actor.new(actor)}
+  end
+
+  def update_budget()
+    sql = "SELECT castings.fee FROM castings WHERE castings.movie_id=$1"
+    values = [@id]
+    fees = SqlRunner.run(sql, values)
+    all_fees = fees.map{|fee| fee['fee'].to_i}
+    total = all_fees.reduce(:+)
+    @budget -= total
   end
 
   # read
